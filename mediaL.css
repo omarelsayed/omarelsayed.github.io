@@ -1,0 +1,110 @@
+
+		body {
+			overflow: auto;
+		}
+
+	
+		.nav-top {
+			position: relative;
+			min-width:100%;
+			text-align: center;
+			display:block;
+			/*border: 11px solid black;*/
+
+		}
+
+
+			.nav-top {
+				-webkit-transform:rotate(90deg);
+			}
+
+			
+
+			.buttons-menu {
+				position:fixed;
+				top:-500px;
+				height: auto;
+				width:auto;
+				display: flex;
+				flex-flow:column wrap;
+				justify-content:space-between;
+				align-items:center;
+			}
+
+
+
+			.floating-menu {
+				background:rgb(39, 174, 96);
+				/*border: 1px solid black;*/
+				position: relative;
+				top:0px;
+				padding:0;
+				margin: 10px 0px;
+				text-align: center;
+				min-width:100%;
+				overflow: hidden;
+				box-shadow:0px 0px 10px #1f1f1f;
+				
+			}
+
+			.floating-menu ul {
+				width: 100%;		
+			}
+
+
+						
+			.buttons-menu button, .buttons-menu li {
+				display:block;
+				width:100%;
+				font:normal 1.6em/1.5 'Open Sans', sans-serif; 
+				color:#222;
+			}	
+
+			 .buttons-menu button:hover {
+				background: #dbdbdb;
+				font-size:2.2em;	
+				border-top:1px solid #fff;
+				border-bottom:1px solid #fff;
+			}
+
+
+			.buttons-menu button:focus {
+				font-size:2.5em;	
+			}
+
+
+			.main-wrapper {
+				/*border:3px solid black;*/
+				height:auto;
+			}
+
+
+			.floating-wrapper {
+				width:100%;
+			}
+
+
+
+			.main-wrapper #time-box {
+				/*border: 1px solid #222;*/
+				padding:0;
+				margin:50px auto;
+	
+			}	
+
+			#time-box .time {
+				/*border: 5px solid #222;*/
+				margin:30px;
+				padding:0px;
+			}
+
+
+
+		.time:after, .time:before {
+			margin:-25px auto;
+			}
+
+
+		.shortcuts {
+				display: none;
+			}	
