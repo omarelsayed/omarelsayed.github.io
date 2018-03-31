@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        
+        body {
+            background:#95afc0;
+            
+        }
+        
+        form {
+            margin:5% auto;
+            display:flex;
+            flex-flow:column nowrap;
+            justify-content:center;
+            align-items:center;
+        }
+        
+        input, input:focus {
+            font:300 1em/1.5 sans-serif;
+            background:rgba(3, 0, 0, 0.1);
+            outline:none;
+            color:#fff;
+        }
+        
+        input::placeholder {
+            color:rgba(0, 0, 0, 0.6);
+        }
+        
+         input[type="text"]:focus {
+             border:1px solid #ffffff;
+             box-shadow:2px 2px 2px #666;
+             width:50%;
+         }
+        
+        input[type="text"] {
+            padding:15px;
+            height:40px;
+            border-radius:10px;
+            width:20%;
+            min-width:300px;
+            text-align:center;
+            border:none;
+            transition:all 0.4s linear;
+            border:1px solid #fff;
+        }
+        
+        input[type="submit"] {
+            width:100px;
+            height:50px;
+            /*box-shadow:3px 3px grey;*/
+            border:none;
+            border-radius:10px;
+            max-width:100px;
+            box-shadow:0px 2px #666;
+            transition:all 0.3s ease ;
+        }
+        
+        input[type="submit"]:hover {
+            cursor:pointer;
+            box-shadow:none;
+            
+        }
+        
+        #header {
+            margin:30px auto;
+            color:#fff;
+            font-size:4em;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    
+    <form onsubmit="goToSearchEngine(); return false">
+        <h1 id="header">GenLib Search</h1>
+        <label for="book_name"></label>
+        <input onblur="this.setAttribute('placeholder', 'Type A Book Name To Search');" onfocus="this.removeAttribute('placeholder');" type="text" name="book_name" placeholder="Type A Book Name To Search" id="book_name" autocomplete="off"/>
+        <br>
+        <input class="btn btn-lg" type="submit" value="Search"/>
+    </form>
+    <h1 id="results"></h1>
+    <script type="text/javascript">
+        function goToSearchEngine() {
+            var query = "http://gen.lib.rus.ec/search.php?req=" + document.querySelector("#book_name").value;
+            window.open(query)
+        }
+        function getResults() {
+            var xhr = new XMLHttpRequest();
+            var url = "http://libgen.io/json.php?ids=1,2&fields=Title,Author,MD5";
+            xhr.open("GET", url, true);
+            xhr.send()
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById("results").innerHTML = xhr.responseText;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
